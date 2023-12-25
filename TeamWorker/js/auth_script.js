@@ -1,24 +1,12 @@
-function main(){
-    // remove preloader
+function main() {
+    //console.log("main +")
     // remove preloader
     hide_preloader()
 
     // trying to change btn status after each change form
-    $("#input_email").on('keyup input', () => {
-        activate_btn()
-    });
-    $("#input_pass").on('keyup input', () => {
-        activate_btn()
-    });
-    
-    // trying to change btn status after each change form
-    $("#input_name").on('keyup input', () => { activate_btn() });
-    $("#input_surname").on('keyup input', () => { activate_btn() });
     $("#input_email").on('keyup input', () => { activate_btn() });
     $("#input_pass").on('keyup input', () => { activate_btn() });
-    $("#input_pass_rep").on('keyup input', () => { activate_btn() });
 };
-
 
 function hide_preloader() {
     //console.log("hide_preloader +")
@@ -68,4 +56,4 @@ function set_ready() {
     return true;
 }
 
-document.addEventListener("DOMContentLoaded", main());
+$(document).ready(main());
