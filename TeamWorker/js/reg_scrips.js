@@ -19,7 +19,6 @@ function main(){
     $("#input_pass_rep").on('keyup input', () => { activate_btn() });
 };
 
-
 function hide_preloader() {
     //console.log("hide_preloader +")
     
@@ -68,4 +67,4 @@ function set_ready() {
     return true;
 }
 
-document.addEventListener("DOMContentLoaded", main());
+$(document).ready(main());

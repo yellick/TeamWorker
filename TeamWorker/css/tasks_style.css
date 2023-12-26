@@ -1,0 +1,169 @@
+/*
+1 color - #E8E8E8 - молочный
+2 color - #474EC9 - синий
+3 color - #FFF - белый
+4 color - #8d5df5 - Фиолетовый
+*/
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+    
+    background: #fff;
+    letter-spacing: 1px;
+    
+    font-family: sans-serif;
+}
+
+#fill {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+}
+
+.wrap {
+    width: 80%;
+    height: 100%;
+    
+    margin: auto;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    
+    background: #474EC9;
+}
+
+.header_wrap {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    position: relative;
+}
+
+.logo {
+    height: 50%;
+    
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.product_name {    
+    font-size: 18px;
+    font-weight: 600;
+    
+    margin-left: 20px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+#u_profile {
+    width: 30px;
+    height: 30px;
+    
+    font-size: 14px;
+    
+    border: 1px solid #fff;
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-left: 10px;
+}
+
+#u_profile:hover {
+    cursor: pointer;
+}
+
+#u_profile_modal {
+    z-index: 2;
+    
+    width: 250px;
+    height: 80px;
+    
+    color: #787878;
+    
+    border: 1px solid #787878;
+    border-radius: 10px;
+    
+    overflow: hidden;
+    
+    justify-content: space-between;
+    
+    position: absolute;
+    
+    right: 0;
+    top: 60px;
+    
+    transition: 0.3s;
+}
+
+.u_profile_modal--inactive {
+    opacity: 0;
+}
+
+.u_profile_modal--active {
+    opacity: 1;
+}
+
+.u_info {
+    width: 80%;
+    height: calc(100% - 20px);
+    
+    background: #fff;
+    
+    padding: 10px;
+    
+    letter-spacing: normal;
+    font-size: 14px;
+        
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.u_name {
+    font-size: 20px;
+}
+
+.modal_btns {
+    width: 20%;
+    height: 100%;
+}
+
+.modal_btns button {
+    width: 100%;
+    height: 50%;
+    
+    border: none;
+    
+    color: #787878;
+    font-size: 20px;
+    
+    background: #fff;
+    
+    transition: 0.2s;
+}
+
+.modal_btns button:hover {
+    background: #eee;
+}
