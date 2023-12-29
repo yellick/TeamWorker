@@ -106,7 +106,7 @@ input {
     color: #f01;
 }
 
-#submit_btn {
+.submit_btn {
     width: 60%;
     height: 40px;
     
@@ -122,15 +122,7 @@ input {
     transition: 0.2s;
 }
 
-#submit_btn:hover {
-    cursor: pointer;
-    
-    -webkit-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
-    -moz-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
-    box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
-}
-
-#submit_btn_inactive {
+.submit_btn--inactive {
     width: 60%;
     height: 40px;
     
@@ -144,6 +136,14 @@ input {
     border: none;
     
     transition: 0.2s;
+}
+
+.submit_btn:hover {
+    cursor: pointer;
+    
+    -webkit-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+    -moz-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+    box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
 }
 
 #reg_link {

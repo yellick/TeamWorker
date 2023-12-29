@@ -27,10 +27,14 @@ function activate_btn() {
     //console.log("activate_btn +")
 
     if (set_ready() == true) {
-        $("#submit_btn_inactive").attr("id", "submit_btn");
+        let btn = $(".submit_btn--inactive");
+        btn.attr("class", "submit_btn");
+        btn.attr('disabled',false);
     } else {
         try {
-            $("#submit_btn").attr("id", "submit_btn_inactive");
+            let btn = $(".submit_btn");
+            btn.attr("class", "submit_btn--inactive");
+            btn.attr('disabled',true);
         } catch (err) {
             return null;
         }

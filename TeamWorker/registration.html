@@ -26,7 +26,7 @@
             <p class="product_name">Team Worker</p>
         </div>
         
-        <form action="">
+        <form id="reg_form">
             <p id="page_type">Регистрация</p>
             <div class="double-input">
                 <input name="name" type="text" placeholder="Имя" id="input_name" class="input">
@@ -37,13 +37,14 @@
             <input name="pass" type="text" placeholder="Пароль" id="input_pass" class="input">
             <p id="incorrect_pass">Пароли не совпадают</p>
             <input name="pass_repetition" type="password" placeholder="Повторите пароль" id="input_pass_rep" class="input">
-            <input type="submit" value="Создать запись" id="submit_btn_inactive" disabled>
+            <input type="submit" value="Создать запись" id="submit_btn" class="submit_btn--inactive" disabled>
         </form>
         
         <div id="reg_link">
             <p>У вас уже есть учётная запись? <a href="index.html">Войдите!</a></p>
         </div>
     </main>
+
     
     <script src='js/jquery-3.6.0.min.js'></script>
     <script src='js/reg_scrips.js'></script>
