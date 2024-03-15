@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Worker | регистрация</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/preloader_style.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/forms_style.css">
+</head>
+
+<body>
+
+    <div id="preloader">
+        <div class="preloader-wrap">
+            <div class="preloader-circle" id="circle_1"></div>
+            <div class="preloader-circle" id="circle_2"></div>
+            <div class="preloader-circle" id="circle_3"></div>
+        </div>
+    </div>
+
+    <div id="modal_wrap">
+        <div class="modal_window">
+            <p class="title">
+                Подтверждение почты
+            </p>
+
+            <p>
+                Сейчас на почту <span id="email"></span> прийдёт письмо с 8-значным кодом подтверждения.
+            </p>
+
+            <form id="confirm_email_form">
+                <input type="text" name="code" placeholder="Код потверждения" id="input_code">
+                <input type="submit" value="Подтвердить" class="submit_conf_btn--inactive" id="sub_confirm_form" disabled>
+            </form>
+        </div>
+    </div>
+
+    <main>
+
+        <div id="logo">
+            <img src="img/logo.png" class="logo_img">
+            <p class="product_name">Team Worker</p>
+        </div>
+
+        <form id="reg_form" class="auth_form">
+            <p id="page_type">Регистрация</p>
+            <div class="double-input">
+                <input name="surname" type="text" placeholder="Фамилия" id="input_surname" class="input" autocomplete="off">
+                <input name="name" type="text" placeholder="Имя" id="input_name" class="input" autocomplete="off">
+            </div>
+
+            <input name="email" type="email" placeholder="Почта" id="input_email" class="input">
+            <input name="pass" type="text" placeholder="Пароль" id="input_pass" class="input" autocomplete="off">
+            <p id="incorrect_pass">Пароли не совпадают</p>
+            <input name="pass_repetition" type="password" placeholder="Повторите пароль" id="input_pass_rep" class="input">
+            <input type="submit" value="Создать запись" id="submit_btn" class="submit_btn--inactive" disabled>
+        </form>
+
+        <div id="reg_link">
+            <p>У вас уже есть учётная запись? <a href="index.html">Войдите!</a></p>
+        </div>
+    </main>
+
+
+    <script src='js/jquery-3.6.0.min.js'></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/notification.js"></script>
+    <script src="js/get_cookie.js"></script>
+    <script src="js/length_limit.js"></script>
+    <script src='js/reg_scrips.js'></script>
+</body>
+
+</html>
