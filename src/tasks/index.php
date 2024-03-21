@@ -93,7 +93,7 @@
         </div>
     </div>
 
-    <div id="modal_team_settings" class="modal_wrap" style="display: flex">
+    <div id="modal_team_settings" class="modal_wrap">
         <div class="modal_window">
             <div class="team_title modal_cont">
                 <p class="modal_label">Название команды</p>
@@ -107,7 +107,7 @@
 
             <div class="btns">
                 <button id="modal_save_team_changes">Сохранить</button>
-                <button id="modal_remove_team">
+                <button id="modal_remove_team" class='modal_remove_team'>
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
                 <button class="modal_cansel_btn">Закрыть</button>
@@ -197,12 +197,13 @@
                         </div>
 
                         <div class="list" id="tasks-list">
-                            <div class="task-list_el list_el" id="task--1"></div>
-                            <div class="task-list_el list_el" id="task--1"></div>
-                            <div class="task-list_el list_el" id="task--1"></div>
-                            <div class="task-list_el list_el" id="task--1"></div>
-                            <div class="task-list_el list_el" id="task--1"></div>
-                            <div class="task-list_el list_el" id="task--1"></div>
+                            <!-- 
+                                
+                            <div class="task-list_el list_el" id="task--1">
+                                <p>Прогуливать последнюю пару каждый божий понедельник</p>
+                                <div class="task_el_shadow"></div>
+                            </div>
+                             -->
                         </div>
                     </div>
 

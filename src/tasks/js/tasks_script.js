@@ -222,6 +222,7 @@ function show_team_window(team_id, u_role) {
     
     // Вывод данных из БД
     add_team_info(team_id, show_settings_btn);
+    add_tasks(team_id);
     add_partics(team_id, show_change_btns);
 
 
@@ -239,6 +240,7 @@ function show_team_window(team_id, u_role) {
     })
 }
 
+// Получение информации о команде
 function add_team_info(team_id, ssb) {
     // Запрос данных о команде
     $.ajax({
@@ -265,8 +267,18 @@ function add_team_info(team_id, ssb) {
                     "aria-hidden": "true"
                 }));
 
+
                 $("#team--settings_btn").on("click", () => {
-                    log(123);
+                    $("#modal_team_settings").css("display", "flex")
+
+                    $("#modal_team_title").val(data.team_name);
+                    $("#modal_team_description").text(data.team_description);
+
+                    $("#modal_save_team_changes").on("click", () => { cahange_team(team_id, data.team_name, data.team_description) })
+                })
+
+                $("#modal_remove_team").on("click", () => {
+                    delete_team(team_id);
                 })
                 
                 $(".modal_cansel_btn").on("click", () => {
@@ -277,6 +289,114 @@ function add_team_info(team_id, ssb) {
     })
 }
 
+// Изменение данных о команде
+function cahange_team(team_id) {
+    show_preloader();
+
+    let tn = $("#modal_team_title").val(),
+        td = $("#modal_team_description").val();
+
+    // Запрос данных о команде
+    $.ajax({
+        type: "POST",
+        url: "php/change_team.php",
+        datatype: 'text',
+        data: {
+            u_id: USER_ID,
+            team_id: team_id,
+            team_name: tn,
+            team_desc: td
+        },
+        success: function (data) {
+            data = JSON.parse(data);
+            
+            const notif = new Notification();
+            notif.settings['messages'] = [
+                "Изменения сохранены",
+                "У вас нет прав для внесения изменений",
+            ];
+
+            
+            if (data.status) {
+                notif.create(0)
+            } else {
+                notif.create(data.error_type)
+            }
+
+            hide_preloader();
+            notif.show();
+            return;
+        }
+    })
+}
+
+// Удаление команды
+function delete_team(team_id) {
+    show_preloader();
+
+    $.ajax({
+        type: "POST",
+        url: "php/delete_team.php",
+        datatype: 'json',
+        data: {
+            u_id: USER_ID,
+            team_id: team_id,
+        },
+        success: function (data) {
+            data = JSON.parse(data);
+            
+            const notif = new Notification();
+            notif.settings['messages'] = [
+                "",
+                "У вас нет прав для внесения изменений",
+            ];
+            
+            if (data.status) {
+                reloadPage();
+            } else {
+                notif.create(data.error_type)
+
+                hide_preloader();
+                notif.show();
+                return;
+            }
+        }
+    })
+}
+
+// Добавить задач команды
+function add_tasks(team_id) {
+    $.ajax({
+        type: "POST",
+        url: "php/get_tasks.php",
+        datatype: 'json',
+        data: {
+            team_id: team_id
+        },
+        success: function (data) {
+
+            data = change_data_to_JSON(data, false);
+
+            for (let i in data) {
+                let t_id = data[i]['id'],
+                    t_text = data[i]['task_text'];
+                
+                $("#tasks-list").append($('<div>', {
+                    'id': "task--" + t_id,
+                    'class': 'task-list_el list_el'
+                }));
+
+                $("#task--" + t_id).append($('<p>' + t_text + '</p>'));
+
+                $("#task--" + t_id).append($('<div>', {
+                    'class': 'task_el_shadow'
+                }));
+            }
+        }
+    })
+}
+
+// вывод участников команды команды
 function add_partics(team_id, schb) {
     
     $.ajax({
@@ -399,11 +519,11 @@ function search_user(team_id) {
                 btn.removeAttr('disabled');
                 btn.val(new_val);
 
-                $("#addP_role_selector").css('display', 'block')
+                $("#addP_role_selector").css('display', 'block');
+                $(".partic").css('justify-content', 'space-between');
 
             } else {
 
-                $("#addP_role_selector").css('display', 'none')
                 switch (data.error_code) {
                     case 1: 
                         partic.text("Такого человека нет");
@@ -413,12 +533,16 @@ function search_user(team_id) {
                         break;
                 }
 
+                $("#addP_role_selector").css('display', 'none');
+                $(".partic").css('justify-content', 'center');
                 $("#modal_addP_btn").attr('class', 'modal_sub_btn--inactive');
+
                 btn.attr('disabled', true);
                 btn.removeAttr('value');
             }
 
             hide_preloader();
+            return;
         }
     });
 }
