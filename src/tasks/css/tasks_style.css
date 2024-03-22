@@ -19,6 +19,8 @@ html, body {
     font-family: sans-serif;
     
     color: #787878;
+
+    user-select: none;
 }
 
 abbr { text-decoration: none; }
@@ -499,6 +501,7 @@ header {
     
     letter-spacing: normal;
     font-size: 14px;
+    user-select: all;
         
     display: flex;
     flex-direction: column;
@@ -601,7 +604,7 @@ main {
 
 /* ----------- TEAMS LIST ----------- */
 .teams_sect {
-    width: 200px;
+    width: 20%;
 }
 
 .teams_sect > *:not(:first-child):not(:last-child) {
@@ -675,7 +678,7 @@ main {
 
 /* ----------- TEAM SECTION ----------- */
 .team_sect {
-    width: 500px;
+    width: 50%;
 }
 
 /* current team */
@@ -763,19 +766,19 @@ main {
     border-bottom: 3px solid #dbdbdb;
 }
 
-.team--content_lists .list_title p:last-child {
+.team--content_lists .team_add_btn:last-child {
     width: 30px;
     height: 30px;
     font-size: 26px;
     margin-left: 10px;
     color: #adadad;
 
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
 
-.team--content_lists .list_title p:last-child:hover {
+.team--content_lists .team_add_btn:hover {
     cursor: pointer;
 }
 
@@ -809,13 +812,26 @@ main {
     max-height: 45%;
 }
 
-.task-list_el {
+#task-list_noTaskBlock {
     width: 100%;
     height: 50px;
 
     background: #fff;
 
     font-size: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-list_el {
+    width: 100%;
+    height: 60px;
+
+    background: #fff;
+
+    font-size: 14px;
 
     overflow: hidden;
     
@@ -826,13 +842,21 @@ main {
     transition: 0.1s;
 }
 
+.task-list_el .task_executor{
+    font-size: 16px;
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
 .task-list_el:hover {
     background: #dbdbdb;
+    cursor: pointer;
 }
 
 .task_el_shadow {
     width: 100%;
-    height: 30px;
+    height: 20px;
 
     position: absolute;
     bottom: 0; left: 0;
@@ -847,7 +871,7 @@ main {
 }
 
 .team--participant_list {
-    height: 35%;
+    max-height: 35%;
 }
 
 .participant-list_el {
@@ -983,7 +1007,7 @@ main {
 
 /* ----------- TASK SECTION ----------- */
 .task_sect {
-    width: calc(100% - 700px);
+    width: 30%;
 }
 
 #current_task {
@@ -994,4 +1018,61 @@ main {
 #create_task {
     width: 100%;
     height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#create_task .form_wrap {
+    width: 100%;
+}
+
+#create_task .form_wrap form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task_sect textarea {
+    width: 80%;
+    resize: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+#create_task select {
+    width: 80%;
+    height: 20px;
+    font-size: 16px;
+}
+
+#create_new_task_btn {
+    width: 70%;
+    height: 50px;
+
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+
+    background: #0078d4;
+
+    border: none;
+
+    margin-top: 30px;
+
+    transition: 0.2s;
+}
+
+#create_new_task_btn:hover {
+    cursor: pointer;
+
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
 }

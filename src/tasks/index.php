@@ -193,33 +193,22 @@
                     <div class="team--tasks_list list_wrap">
                         <div class="list_title">
                             <p>Список задач</p>
-                            <p id="team--add_task">+</p>
+                            <p id="team--add_task" class='team_add_btn'>+</p>
                         </div>
 
-                        <div class="list" id="tasks-list">
-                            <!-- 
-                                
-                            <div class="task-list_el list_el" id="task--1">
-                                <p>Прогуливать последнюю пару каждый божий понедельник</p>
-                                <div class="task_el_shadow"></div>
-                            </div>
-                             -->
-                        </div>
+                        <div class="list" id="tasks-list"></div>
                     </div>
 
                     <div class="team--participant_list list_wrap">
-                        <div class="list_title"><p>Участники</p> <p id="team--add_partic">+</p></div>
+                        <div class="list_title">
+                            <p>Участники</p>
+                            <p id="team--add_partic" class='team_add_btn'>+</p>
+                        </div>
 
                         <div class="list" id="participant_list"></div>
                     </div>
                     
                 </div>
-
-                <!-- 
-                <div class="team--settings_btn">
-                    <button>Настройки</button>
-                </div>
-                 -->
             </div>
 
             <div id="create_team">
@@ -246,7 +235,7 @@
                             Можно оставить пустым
                         </p>
 
-                        <textarea id="description" cols="30" rows="5" placeholder="Описание команды"></textarea>
+                        <textarea id="description" cols="30" rows="5" placeholder="Описание команды">Команда для ...</textarea>
 
                         <input type="submit" class="submit--active" name="team_name" value="Создать">
                     </form>
@@ -265,8 +254,21 @@
 
             <div id="create_task" style="display: flex">
                 <div class="sect_title">
-                    <p>Создание команды</p>
+                    <p>Новая задача</p>
                 </div>
+
+                <div class="form_wrap">
+                    <form>
+                        <textarea id="task_text" rows="5" placeholder="Текст задачи" required></textarea>
+                        
+                        <p class="label">Выполняет</p>
+                        <select id="task_partic_selector" required></select>
+
+                        <button id="create_new_task_btn">Создать задачу</button>
+                    </form>
+                </div>
+
+                <div></div>
             </div>
         </section>
     </main>

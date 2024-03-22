@@ -204,6 +204,8 @@ function show_rem_user_window(USER_ID) {
     $("#rem_user_form").css("display", "flex");
     
     $("#modal_remove_account_btn").on('click', () => {
+        show_preloader();
+        
         $.ajax({
             type: "POST",
             url: "php/remove_account.php",

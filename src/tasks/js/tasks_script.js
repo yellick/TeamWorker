@@ -106,7 +106,7 @@ function adding_teams() {
             hide_preloader();
 
             // открытие окон в секции команд
-            $(".team").on("click", (el) => get_user_role(el["currentTarget"]) );
+            $(".team").on("click", (el) => get_user_role(el["currentTarget"].getAttribute("id").split("--")[1]) );
             $("#create_team_btn").on("click", () => show_create_team_window() );
         }
     })  
@@ -142,12 +142,6 @@ function show_create_team_window() {
     $("#create_team").css("display", "block");
 }
 
-// закрытие окна создания команды
-function hide_create_team_window() {
-    $("#no_team_selected_block").css("display", "flex");
-    $("#create_team").css("display", "none");
-}
-
 
 // запрос на создание команды
 function create_team() {
@@ -174,7 +168,7 @@ function create_team() {
 
 
 // получение роли пользователя
-function get_user_role(team) {
+function get_user_role(team_id) {
     show_preloader();
 
     $("#no_team_selected_block").css("display", "none");
@@ -182,7 +176,10 @@ function get_user_role(team) {
     $("#current_team").css("display", "none");
     $(".team--settings_btn").remove();
 
-    let team_id = team.getAttribute("id").split("--")[1];
+    
+    $("#no_task_selected_block").css("display", 'flex');
+    $("#current_task").css("display", 'none');
+    $("#create_task").css("display", 'none');
 
     $.ajax({
         type: "POST",
@@ -217,19 +214,32 @@ function show_team_window(team_id, u_role) {
 
     
     // отчистка старой формы
+    $("#tasks-list").empty();
     $("#participant_list").empty();
 
+    
+    if (show_change_btns) {
+        $(".team_add_btn").css("display", "flex")
+
+        // открытие модального окна
+        $("#team--add_partic").on("click", () => {
+            $("#modal_add_partic").css("display", "flex");
+        })
+
+
+        $("#team--add_task").on("click", () => {
+            show_preloader();
+            get_partics(team_id)
+        })
+    } else {
+        $(".team_add_btn").css("display", "none")
+    }
+    
     
     // Вывод данных из БД
     add_team_info(team_id, show_settings_btn);
     add_tasks(team_id);
     add_partics(team_id, show_change_btns);
-
-
-    // открытие модального окна
-    $("#team--add_partic").on("click", () => {
-        $("#modal_add_partic").css("display", "flex");
-    })
     
     // кнопки в модальных окнах
     $("#modal_addP_btn").on("click", () => { append_p() })
@@ -375,23 +385,54 @@ function add_tasks(team_id) {
         },
         success: function (data) {
 
-            data = change_data_to_JSON(data, false);
-
-            for (let i in data) {
-                let t_id = data[i]['id'],
-                    t_text = data[i]['task_text'];
+            if (data != "[]") {
+                $("#task-list_noTaskBlock").css("display", "none");
                 
+                data = change_data_to_JSON(data, false);
+
+                for (let i in data) {
+                    let t_id = data[i]['id'],
+                        t_text = data[i]['task_text'],
+                        t_exec_id = data[i]['executor_id'],
+                        t_exec_name = data[i]['exe_name']
+                    
+                    // блок задачи
+                    $("#tasks-list").append($('<div>', {
+                        'id': "task--" + t_id + '--' + t_exec_id,
+                        'class': 'task-list_el list_el'
+                    }));
+
+                    // исполнитель
+                    $("#task--" + t_id + '--' + t_exec_id).append($('<p>', {
+                        'id': "task_exec--" + t_id,
+                        'class': 'task_executor'
+                    }));
+
+                    if (t_exec_id != 0){
+                        $("#task_exec--" + t_id).html("Выполняет: " + t_exec_name)
+                        
+                    } else {
+                        $("#task_exec--" + t_id).html("Исполнитель не выбран");
+                    }
+    
+                    // текст задачи и затенение снизу
+                    $("#task--" + t_id + '--' + t_exec_id).append($('<p>' + t_text + '</p>'));
+    
+                    $("#task--" + t_id + '--' + t_exec_id).append($('<div>', {
+                        'class': 'task_el_shadow'
+                    }));
+                }
+
+                // Вызов функции по нажатию на задачу
+                $(".task-list_el").on("click", (el) => log(el['currentTarget']) )
+            } else {
                 $("#tasks-list").append($('<div>', {
-                    'id': "task--" + t_id,
-                    'class': 'task-list_el list_el'
+                    'id': "task-list_noTaskBlock"
                 }));
 
-                $("#task--" + t_id).append($('<p>' + t_text + '</p>'));
-
-                $("#task--" + t_id).append($('<div>', {
-                    'class': 'task_el_shadow'
-                }));
-            }
+                $("#task-list_noTaskBlock").append($('<p>В команде нет задач</p>'));
+            } 
+                       
         }
     })
 }
@@ -414,18 +455,19 @@ function add_partics(team_id, schb) {
                 let p_id = data[i]['id'],
                     p_name = data[i]['name'],
                     p_surname = data[i]['surname'],
-                    p_role = data[i]['role'];
+                    p_role = data[i]['role'],
+                    p_role_text = '';
 
                 let show_role = true;
                 switch (p_role) {
                     case '0':
-                        p_role = 'У';
+                        p_role_text = 'У';
                         break;
                     case '1':
-                        p_role = 'М';
+                        p_role_text = 'М';
                         break;
                     case '2':
-                        p_role = 'С';
+                        p_role_text = 'С';
                         break;
                     default:
                         console.error("Undefind role value for user id: " + p_id);
@@ -444,7 +486,7 @@ function add_partics(team_id, schb) {
                 }));
 
                 if (show_role) {
-                    let attrStr = "  (<abbr title='Роли участников:\nУ - участник\nМ - модератор\nС - создатель'>" + p_role + "</abbr>)";
+                    let attrStr = "  (<abbr title='Роли участников:\nУ - участник\nМ - модератор\nС - создатель'>" + p_role_text + "</abbr>)";
                     $('#partic_name--' + i).html(p_name + " " + p_surname + attrStr);
                 } else {
                     $('#partic_name--' + i).html(p_name + " " + p_surname)
@@ -452,7 +494,7 @@ function add_partics(team_id, schb) {
 
                 if (USER_ID != p_id) {
 
-                    if (schb) {
+                    if (schb && p_role != '2') {
                         $("#participant--" + p_id).append($('<button>', {
                             'id': "rem_p--" + p_id + "--" + team_id,
                             'class': 'rem_p',
@@ -568,7 +610,14 @@ function append_p(){
         },
         success: function (data) {
             if (Boolean(data)) {
-                reloadPage()
+                
+                $("#modal_add_partic").css("display", "none");
+                const notif = new Notification;
+                notif.settings['messages'] = [ "Пользователь добавлен" ]
+                notif.create(0);
+                notif.show();
+
+                get_user_role(team_id)
             }
         }
     });
@@ -590,13 +639,107 @@ function rem_p(u_id, team_id) {
             },
             success: function (data) {
                 if (Boolean(data)) {
-                    reloadPage()
+                    $("#modal_rem_p").css("display", "none");
+                    const notif = new Notification;
+                    notif.settings['messages'] = [ "Пользователь исключён" ]
+                    notif.create(0);
+                    notif.show();
+    
+                    get_user_role(team_id)
                 }
             }
         });
     })
     
     return;
+}
+
+
+
+// получение участников команды
+function get_partics(team_id) {
+    $.ajax({
+        type: "POST",
+        url: "php/get_team_compos.php",
+        datatype: 'text',
+        data: {
+            team_id: team_id
+        },
+        success: function (data) {
+            partics = change_data_to_JSON(data, true);
+
+            show_create_task_window(team_id, partics);
+        }
+    })
+}
+
+// показ команды
+function show_create_task_window(team_id, data){
+    $
+    let selector = $("#task_partic_selector");
+    $("#task_text").html('');
+    $("#task_partic_selector").html("")
+
+    for (let i in data) {
+        let p_id = data[i]['id'],
+            p_name = data[i]['name'],
+            p_surname = data[i]['surname'];
+
+        selector.append($("<option value="+p_id+">"+p_name+' '+p_surname+"</option>"))
+    }
+
+    $("#no_task_selected_block").css("display", 'none');
+    $("#current_task").css("display", 'none');
+    $("#create_task").css("display", 'flex');
+    hide_preloader();
+
+
+    $('#create_new_task_btn').on("click", (e) => {
+        e.preventDefault();
+
+        let task_text = $("#task_text").val(),
+            executor = $("#task_partic_selector").val();
+
+        const notif = new Notification;
+        notif.settings['messages'] = [
+            'Задача добавленна',
+            'Заполните все поля',
+            'Ошибка'
+        ]
+
+        if (task_text != '' && executor != '') {
+            show_preloader();
+            create_task(team_id,task_text, executor, notif);
+        } else {
+            notif.create(1);
+            notif.show();
+        }
+    })
+}
+
+// создание задачи
+function create_task(team_id, task_text, exec_id, notif) {
+    $.ajax({
+        type: "POST",
+        url: "php/create_task.php",
+        datatype: 'json',
+        data: {
+            team_id: team_id,
+            u_id: exec_id,
+            tt: task_text
+        },
+        success: function (data) {
+            if (Boolean(data)) {
+                $("#task_text").val('');
+                $("#task_partic_selector").val('');
+
+                notif.create(0);
+                notif.show()
+
+                get_user_role(team_id);
+            }
+        }
+    });
 }
 
 
