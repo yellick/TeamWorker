@@ -1,0 +1,260 @@
+/*
+1 color - #E8E8E8 - молочный
+2 color - #474EC9 - синий
+3 color - #FFF - белый
+4 color - #8d5df5 - Фиолетовый
+*/
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    color: #787878;
+}
+
+body {
+    font-family: sans-serif;
+
+    background: rgb(255, 255, 255);
+    background: -webkit-linear-gradient(52deg, rgba(255, 255, 255, 1) 0%, rgba(212, 212, 255, 1) 35%, rgba(198, 245, 255, 1) 69%, rgba(255, 255, 255, 1) 100%);
+    background: -o-linear-gradient(52deg, rgba(255, 255, 255, 1) 0%, rgba(212, 212, 255, 1) 35%, rgba(198, 245, 255, 1) 69%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(142deg, rgba(255, 255, 255, 1) 0%, rgba(212, 212, 255, 1) 35%, rgba(198, 245, 255, 1) 69%, rgba(255, 255, 255, 1) 100%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 500px;
+
+    background: #fff;
+
+    padding: 20px 10px;
+
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+
+    letter-spacing: 1px;
+}
+
+#logo {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo_img {
+    max-height: 86px;
+    padding: 10% 0;
+}
+
+.product_name {
+    font-size: 18px;
+}
+
+
+/* ------------------------ */
+.auth_form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 30px 0;
+
+    position: relative;
+}
+
+#page_type {
+    width: 90%;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+input {
+    width: calc(90% - 24px);
+    height: 20px;
+
+    margin: 15px 0;
+    padding: 5px 10px;
+
+    font-size: 16px;
+}
+
+.double-input {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.double-input input {
+    width: calc(47% - 24px);
+}
+
+#incorrect_pass {
+    width: 90%;
+    display: none;
+    position: absolute;
+    top: 215px;
+
+    text-align: left;
+    font-size: 14px;
+    color: #f01;
+}
+
+.submit_btn {
+    width: 60%;
+    height: 40px;
+
+    padding: 0;
+
+    font-size: 26px;
+
+    color: #fff;
+    background: #8d5df5;
+
+    border: none;
+
+    transition: 0.2s;
+}
+
+.submit_btn--inactive {
+    width: 60%;
+    height: 40px;
+
+    padding: 0;
+
+    font-size: 26px;
+
+    color: #fff;
+    background: #b798fa;
+
+    border: none;
+
+    transition: 0.2s;
+}
+
+.submit_btn:hover {
+    cursor: pointer;
+
+    -webkit-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+    -moz-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+    box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+}
+
+
+/* ------------------------ */
+#reg_link {
+    width: 100%;
+
+    text-align: center;
+}
+
+#reg_link a {
+    text-decoration: none;
+    color: #5258c4;
+}
+
+
+/* ------------------------ */
+#modal_wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    z-index: 10;
+    background: rgba(189, 189, 189, 0.7);
+    
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_window {
+    width: 475px;
+    background: #fff;
+    
+    padding: 20px 0;
+        
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+}
+
+.modal_window p {
+    margin-bottom: 20px;
+}
+
+.modal_window input {
+    margin: 0;
+}
+
+p {
+    width: 90%;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.2;
+    padding: 0 5%;
+}
+
+.title {    
+    font-size: 26px;
+}
+
+#confirm_email_form {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#confirm_email_form input:not(:last-child) {
+    margin-bottom: 20px;
+    width: 70%;
+}
+
+.sub_conf_btn {
+    width: 60%;
+    height: 40px;
+
+    padding: 0;
+
+    font-size: 26px;
+
+    color: #fff;
+    background: #8d5df5;
+
+    border: none;
+
+    transition: 0.2s;
+}
+
+.submit_conf_btn--inactive {
+    width: 60%;
+    height: 40px;
+
+    padding: 0;
+
+    font-size: 26px;
+
+    color: #fff;
+    background: #b798fa;
+
+    border: none;
+
+    transition: 0.2s;
+}
+
+.sub_conf_btn:hover {
+    cursor: pointer;
+
+    -webkit-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+    -moz-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+    box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+}

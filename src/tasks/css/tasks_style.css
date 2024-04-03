@@ -1,0 +1,1287 @@
+/*
+1 color - #E8E8E8 - молочный
+2 color - #474EC9 - синий
+3 color - #FFF - белый
+4 color - #8d5df5 - Фиолетовый
+5 color - #0078d4 - голубой
+*/
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    
+    background: #fff;
+    letter-spacing: 1px;
+    
+    font-family: sans-serif;
+    
+    color: #787878;
+
+    user-select: none;
+}
+
+abbr { text-decoration: none; }
+abbr:hover { cursor: alias; }
+
+/**/
+.modal_wrap {
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.3);
+
+    position: absolute;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 3;
+}
+
+#modal_exit .modal_window {
+    width: 250px;
+    height: 100px;
+
+    background: #fff;
+
+    font-size: 20px;
+
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#modal_exit .modal_window .btns {
+    width: 100%;
+    height: 30px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#modal_exit .modal_window .btns button {
+    width: 30%;
+    height: 100%;
+
+    border: none;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+#modal_exit .modal_window .btns button:hover {
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+
+    cursor: pointer;
+}
+
+.modal_sub_btn {
+    background: #8d5df5;
+    color: #fff;
+}
+
+.modal_sub_btn--inactive {
+    background: #b798fa;
+    color: #fff;
+}
+
+.modal_cansel_btn {
+    outline: 1px solid #dbdbdb;
+    background: #fff;
+}
+
+/**/
+#modal_add_partic .modal_window {
+    width: 500px;
+
+    background: #fff;
+
+    font-size: 20px;
+
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modal_add_partic .modal_window > * {
+    margin: 15px 0;
+}
+
+#modal_add_partic .modal_title {
+    font-size: 26px;
+}
+
+#modal_add_partic #modal_search_partic {
+    width: 100%;
+    height: 30px;
+    
+    display: flex;
+    justify-content: center;
+}
+
+#modal_add_partic input {
+    height: 100%;
+
+    margin: 0 5px;
+    padding: 0;
+    border: none;
+
+    font-size: 16px;
+}
+
+#modal_add_partic input[type=text] {
+    width: 60%;
+
+    border: 1px solid #787878;
+    
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+#modal_add_partic input[type=submit] {
+    width: 20%;
+    
+    color: #fff;
+    background: #0078d4;
+}
+
+#modal_add_partic input[type=submit]:hover {
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    
+    cursor: pointer;
+}
+
+#modal_add_partic .modal_window .btns {
+    width: 100%;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal_add_partic .modal_window .btns button {
+    width: 30%;
+    height: 100%;
+
+    border: none;
+
+    font-size: 16px;
+
+    margin: 0 10px;
+
+    transition: 0.2s;
+}
+
+#modal_add_partic .modal_window .btns button:hover {
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+
+    cursor: pointer;
+}
+
+#modal_add_partic .modal_window .btns .modal_sub_btn--inactive:hover {
+    box-shadow: none;
+
+    cursor: default;
+}
+
+#modal_add_partic .partic {
+    min-width: 200px;
+    height: 60px;
+    font-size: 20px;
+    
+    margin: 0;
+    padding: 5px 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#addP_role_selector {
+    width: 100%;
+    height: 30px;
+
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    display: none;
+}
+
+/**/
+#modal_rem_p .modal_window {
+    width: 300px;
+    height: 100px;
+
+    background: #fff;
+
+    font-size: 20px;
+    text-align: center;
+
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#modal_rem_p .modal_window .btns {
+    width: 100%;
+    height: 30px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#modal_rem_p .modal_window .btns button {
+    width: 40%;
+    height: 100%;
+
+    border: none;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+#modal_rem_p .modal_window .btns button:hover {
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+
+    cursor: pointer;
+}
+
+/**/
+#modal_team_settings .modal_window {
+    width: 400px;
+
+    background: #fff;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    font-size: 20px;
+    text-align: center;
+
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modal_team_settings .modal_window > * {
+    width: 100%;
+}
+
+#modal_team_settings .modal_cont {
+    margin-bottom: 20px;
+}
+
+#modal_team_settings .modal_label {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#modal_team_settings input {
+    width: 90%;
+
+    font-size: 18px;
+
+    border: none;
+    outline: none;
+
+    border-bottom: 1px solid #787878;
+}
+
+#modal_team_settings textarea {
+    width: 90%;
+    resize: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+#modal_team_settings .modal_window .btns {
+    width: 100%;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal_team_settings .modal_window .btns button {
+    height: 100%;
+
+    border: none;
+
+    margin: 0 10px;
+    padding: 0 10px;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+#modal_team_settings #modal_save_team_changes {
+    background: #0078d4;
+    color: #fff;
+}
+
+#modal_team_settings .modal_remove_team {
+    padding: 0 10px;
+    background: #d40000;
+    color: #fff;
+}
+
+#modal_team_settings .modal_window .btns button:hover {
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+
+    cursor: pointer;
+}
+
+/**/
+#modal_change_task .modal_window {
+    width: 500px;
+    height: 400px;
+
+    background: #fff;
+
+    font-size: 20px;
+    text-align: center;
+
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#modal_change_task .change_task_wrap {
+    width: 90%;
+}
+
+#modal_change_task textarea {
+    width: 100%;
+    height: 200px;
+    resize: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+#modal_change_task .label {
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#modal_change_task select {
+    width: 100%;
+    height: 26px;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+
+#modal_change_task .btns {
+    width: 100%;
+    height: 30px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#modal_change_task .btns button {
+    width: 40%;
+    height: 100%;
+
+    border: none;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+#modal_change_task .btns button:hover {
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.42);
+
+    cursor: pointer;
+}
+
+
+
+.icon {
+    color: #787878;
+}
+
+#fill {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: none;
+}
+
+.wrap {
+    width: 80%;
+    height: 100%;
+    
+    margin: auto;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    
+    background: #0078d4;
+}
+
+.header_wrap {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    position: relative;
+}
+
+.logo {
+    height: 50%;
+    
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.product_name {    
+    font-size: 18px;
+    font-weight: 600;
+    
+    margin-left: 20px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+#u_profile {
+    width: 30px;
+    height: 30px;
+    
+    border: 1px solid #fff;
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#u_profile p {
+    font-size: 12px;
+    line-height: 1;
+}
+
+#u_profile:hover {
+    cursor: pointer;
+}
+
+#u_profile_modal {
+    z-index: 2;
+    
+    width: 250px;
+    height: 80px;
+    
+    color: #787878;
+    
+    border: 1px solid #787878;
+    border-radius: 10px;
+    
+    overflow: hidden;
+    
+    display: none;
+    justify-content: space-between;
+    
+    position: absolute;
+    
+    right: 0;
+    top: 60px;
+    
+    transition: 0.3s;
+}
+
+.u_profile_modal--inactive {
+    opacity: 0;
+}
+
+.u_profile_modal--active {
+    opacity: 1;
+}
+
+.u_info {
+    width: 80%;
+    height: calc(100% - 20px);
+    
+    background: #fff;
+    
+    padding: 10px;
+    
+    letter-spacing: normal;
+    font-size: 14px;
+
+    user-select: auto;
+        
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.u_name {
+    font-size: 20px;
+}
+
+.modal_btns {
+    width: 20%;
+    height: 100%;
+}
+
+.modal_btns button {
+    width: 100%;
+    height: 50%;
+    
+    border: none;
+    
+    color: #787878;
+    font-size: 20px;
+    
+    background: #fff;
+    
+    transition: 0.2s;
+}
+
+.modal_btns button:hover {
+    cursor: pointer;
+    background: #ededed;
+}
+
+
+/* ----------- main ----------- */
+main {
+    width: 100%;
+    height: calc(100% - 50px);
+    display: flex;
+}
+
+.main_sect {
+    height: 100%;
+    position: relative;
+
+    
+    
+    overflow-y: scroll;
+}
+
+.main_sect::-webkit-scrollbar {
+    /* ширина всей полосы прокрутки */
+    width: 5px;               
+}
+
+.main_sect::-webkit-scrollbar-track {
+    /* цвет зоны отслеживания */
+    background: #dbdbdb;
+}
+
+.main_sect::-webkit-scrollbar-thumb {
+    /* цвет бегунка */
+    background-color: #0078d4;
+    /* округлось бегунка */
+    border-radius: 0px;       
+}
+
+.sect_title {
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    
+    position: sticky;
+    top: 0;
+    
+    background: #fff;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 3px solid #dbdbdb;
+}
+
+.sect_title * {
+    margin: 0 5px;
+}
+
+.no_data {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ----------- TEAMS LIST ----------- */
+.teams_sect {
+    width: 20%;
+}
+
+.teams_sect > *:not(:first-child):not(:last-child) {
+    border-bottom: 3px solid #dbdbdb;
+}
+
+#create_team_btn, #create_team:visited {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 40px;
+
+    color: #787878;
+    
+    transition: 0.2s;
+
+    text-decoration: none;
+}
+
+#create_team_btn:hover {
+    background: #dbdbdb;
+    cursor: pointer;
+}
+
+#create_team_btn p:first-child {
+    font-size: 40px;
+}
+
+#create_team_btn * {
+    margin: 0 5px;
+}
+
+#teams_list {
+    width: 100%;
+}
+
+#teams_list > *:not(:last-child) {
+    border-bottom: 3px solid #dbdbdb;
+}
+
+.team {
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    transition: 0.1s;
+}
+
+.team:hover {
+    background: #dbdbdb;
+    cursor: pointer;
+}
+
+.team .team_content {
+    width: calc(100% - 5px);
+    height: 100%;
+    margin-left: 5px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.team .team_content .team_name p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+
+/* ----------- TEAM SECTION ----------- */
+.team_sect {
+    width: 50%;
+}
+
+/* current team */
+#current_team {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    padding: 30px 0;
+    box-sizing: border-box;
+}
+
+.team--about {
+    width: 100%;
+    height: 25%;
+    text-align: center;
+}
+
+.team--team_name {
+    font-size: 26px;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team--settings_btn {
+    background: none;
+
+    border: none;
+    border-radius: 5px;
+
+    color: #787878;
+    font-size: 20px;
+
+    margin-left: 10px;
+    padding: 5px;
+
+    transition: 0.2s;
+}
+
+#team--settings_btn:hover {
+    cursor: pointer;
+    background: #ededed;
+}
+
+.team--team_descriprion {
+    width: 100%;
+
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+
+    font-size: 14px;
+    text-indent: 5px;
+}
+
+.team--content_lists {
+    width: 100%;
+    height: 75%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.team--content_lists .list_wrap {
+    width: 100%;
+    border-bottom: 3px solid #dbdbdb;
+}
+
+.team--content_lists .list_title {
+    width: 100%;
+    height: 30px;
+
+    font-size: 16px;
+    text-transform: uppercase;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 3px solid #dbdbdb;
+}
+
+.team--content_lists .team_add_btn:last-child {
+    width: 30px;
+    height: 30px;
+    font-size: 26px;
+    margin-left: 10px;
+    color: #adadad;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.team--content_lists .team_add_btn:hover {
+    cursor: pointer;
+}
+
+.list {
+    height: calc(100% - 33px);
+    overflow-y: scroll;
+}
+
+.list::-webkit-scrollbar {
+    /* ширина всей полосы прокрутки */
+    width: 3px;               
+}
+
+.list::-webkit-scrollbar-track {
+    /* цвет зоны отслеживания */
+    background: #dbdbdb;
+}
+
+.list::-webkit-scrollbar-thumb {
+    /* цвет бегунка */
+    background-color: #0078d4;
+    /* округлось бегунка */
+    border-radius: 5px;       
+}
+
+.list_el:not(:last-child) {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.team--tasks_list {
+    max-height: 45%;
+}
+
+#task-list_noTaskBlock {
+    width: 100%;
+    height: 50px;
+
+    background: #fff;
+
+    font-size: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-list_el {
+    width: 100%;
+    height: 60px;
+
+    background: #fff;
+
+    font-size: 16px;
+
+    overflow: hidden;
+    
+    padding: 5px 10px 5px 25px;
+    box-sizing: border-box;
+
+    position: relative;
+    transition: 0.1s;
+}
+
+.task-list_el .task_executor {
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+.task-list_el:hover {
+    background: #dbdbdb;
+    cursor: pointer;
+}
+
+
+.task-list_el .task_mark {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: calc(50% - 5px);
+    right: 10px;
+}
+
+.task-list_el .task_mark-c { background: #1ec615; }
+.task-list_el .task_mark-nc { background: #727272; }
+
+
+.task_el_shadow {
+    width: 100%;
+    height: 20px;
+
+    position: absolute;
+    bottom: 0; left: 0;
+
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 11%, rgba(255,255,255,0) 100%);
+    transition: 0.1s;
+}
+
+.task-list_el:hover .task_el_shadow {
+    opacity: 0;
+}
+
+.team--participant_list {
+    max-height: 35%;
+}
+
+.participant-list_el {
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.participant-list_el .partic_name {
+    width: 70%;
+
+    margin-left: 3%;
+    overflow: hidden;
+
+    font-size: 16px;
+}
+
+.participant-list_el .rem_p {
+    width: 24%;
+    height: 26px;
+
+    margin-right: 3%;
+
+    color: #fff;
+    background: #0078d4;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+}
+
+.participant-list_el .rem_p:hover {
+    cursor: pointer;
+}
+
+.participant-list_el #user_pointer {
+    width: 24%;
+    height: 30px;
+
+    margin-right: 3%;
+
+    color: #3ca7f8;
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* create team */
+#create_team {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#create_team .form_wrap {
+    width: 100%;
+    height: calc(100% - 43px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#create_team .form_wrap form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#create_team .form_wrap form .label {
+    width: 90%;
+    font-size: 18px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+#create_team .form_wrap form input {
+    width: 80%;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+#create_team .form_wrap form textarea {
+    width: 80%;
+    resize: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+#create_team .form_wrap form input[type=submit] {
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    transition: 0.2s;
+}
+
+#create_team .form_wrap form .submit_btn--inactive {
+    background: #000;
+}
+
+#create_team .form_wrap form .submit--active {
+    background: #0078d4;
+}
+
+#create_team .form_wrap form .submit--active:hover {
+    cursor: pointer;
+
+    -webkit-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+    -moz-box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+    box-shadow: 2px 2px 8px -2px rgba(34, 60, 80, 0.75);
+}
+
+#current_team {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ----------- TASK SECTION ----------- */
+.task_sect {
+    width: 30%;
+}
+
+/* текущая задача */
+#current_task {
+    width: 100%;
+    height: 100%;
+    
+    padding: 10px;
+    box-sizing: border-box;
+    
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+#current_task > * {
+    margin: 15px 0;
+
+    width: 100%;
+} 
+
+#current_task .task_text_wrap {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+#current_task .task_executor_wrap {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#current_task .task_status-wrap {
+    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+}
+
+#current_task .task_status-wrap > * {
+    margin: 0 3px;
+}
+
+/*
+#current_task .task_status_mark {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+}
+
+#current_task .task_status_mark-c {
+    background: #41ff37;
+}
+
+#current_task .task_status_mark-nc {
+    background: #727272;
+}
+*/
+
+#current_task #task_btns_block {
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+}
+
+#current_task #task_btns_block .task_btn {
+    height: 100%;
+
+    color: #fff;
+    font-size: 16px;
+
+    background: #0078d4;
+
+    border: none;
+    outline: none;
+
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    margin: 0 15px;
+
+    transition: 0.2s;
+}
+
+#current_task #task_btns_block .task_delete_btn {
+    height: 100%;
+
+    color: #fff;
+    font-size: 16px;
+
+    background: #d40000;
+
+    border: none;
+    outline: none;
+
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    margin: 0 15px;
+
+    transition: 0.2s;
+}
+
+#current_task #task_btns_block button:hover {
+    cursor: pointer;
+
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+}
+
+
+/* создание задачи */
+#create_task {
+    width: 100%;
+    height: 100%;
+
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#create_task .form_wrap {
+    width: 100%;
+}
+
+#create_task .form_wrap form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task_sect textarea {
+    width: 80%;
+    resize: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+#create_task select {
+    width: 80%;
+    height: 20px;
+    font-size: 16px;
+}
+
+#create_new_task_btn {
+    width: 70%;
+    height: 50px;
+
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+
+    background: #0078d4;
+
+    border: none;
+
+    margin-top: 30px;
+
+    transition: 0.2s;
+}
+
+#create_new_task_btn:hover {
+    cursor: pointer;
+
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+    box-shadow: 0px 1px 8px 0px rgba(34, 60, 80, 0.42);
+}
